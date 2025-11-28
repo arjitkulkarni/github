@@ -19,40 +19,72 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Header scroll effect
+    // Header scroll effect with smooth transitions
     let lastScroll = 0;
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
       if (currentScroll > 100) {
         header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+        header.style.background = 'linear-gradient(180deg, rgba(15,11,30,0.98), rgba(26,21,40,0.97))';
       } else {
         header.style.boxShadow = 'none';
+        header.style.background = 'linear-gradient(180deg, rgba(15,11,30,0.98), rgba(26,21,40,0.95))';
       }
       lastScroll = currentScroll;
+    });
+
+    // Add loading state
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+      // Trigger initial animations
+      document.querySelectorAll('.section').forEach((section, index) => {
+        setTimeout(() => {
+          section.classList.add('visible');
+        }, index * 100);
+      });
     });
 
     // Intersection Observer for fade-in animations
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
     // Observe sections for animation
-    document.querySelectorAll('.section, .card, .cmd').forEach(el => {
+    document.querySelectorAll('.section').forEach((el, index) => {
+      el.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+      observer.observe(el);
+    });
+
+    // Observe cards and commands with stagger
+    document.querySelectorAll('.card, .cmd, .gallery-item').forEach((el, index) => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
+      el.style.transition = `opacity 0.6s ease ${index * 0.05}s, transform 0.6s ease ${index * 0.05}s`;
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      cardObserver.observe(el);
     });
 
     // Ensure hero image loads properly
