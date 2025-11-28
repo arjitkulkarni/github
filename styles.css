@@ -862,32 +862,59 @@
   .nav-grid li:last-child{
     border-bottom:none;
   }
+  .visibility-table-wrapper{
+    margin-top:16px;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 8px 24px rgba(0,0,0,0.4), 0 0 30px rgba(168,85,247,0.15);
+  }
   .mini-table{
     width:100%;
     border-collapse:collapse;
-    background:rgba(168,85,247,0.05);
-    border:1px solid rgba(168,85,247,0.25);
+    background:linear-gradient(180deg, rgba(18,15,30,0.95), rgba(15,11,26,0.98));
+    border:1px solid rgba(168,85,247,0.3);
     border-radius:8px;
     overflow:hidden;
     margin-top:12px;
     box-shadow:0 4px 16px rgba(0,0,0,0.3);
   }
+  .visibility-table-wrapper .mini-table{
+    margin-top:0;
+    border-radius:0;
+  }
   .mini-table th, .mini-table td{
-    padding:12px 16px;
-    border:1px solid rgba(168,85,247,0.15);
+    padding:16px 20px;
+    border:1px solid rgba(168,85,247,0.2);
     text-align:left;
     color:var(--muted);
+    line-height:1.6;
   }
   .mini-table thead{
-    background:linear-gradient(90deg, rgba(168,85,247,0.15), rgba(59,130,246,0.1));
+    background:linear-gradient(180deg, rgba(168,85,247,0.2), rgba(59,130,246,0.15));
+    border-bottom:2px solid rgba(168,85,247,0.4);
   }
   .mini-table thead th{
     color:var(--accent);
-    font-weight:600;
-    font-size:14px;
+    font-weight:700;
+    font-size:15px;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    padding:18px 20px;
+  }
+  .mini-table tbody tr{
+    transition:all 0.2s ease;
+    border-bottom:1px solid rgba(168,85,247,0.1);
+  }
+  .mini-table tbody tr:last-child{
+    border-bottom:none;
   }
   .mini-table tbody tr:hover{
-    background:rgba(168,85,247,0.08);
+    background:linear-gradient(90deg, rgba(168,85,247,0.12), rgba(59,130,246,0.08));
+    transform:translateX(4px);
+  }
+  .mini-table tbody td:first-child{
+    font-weight:600;
+    color:var(--text);
   }
   
   /* workflow & commands */
