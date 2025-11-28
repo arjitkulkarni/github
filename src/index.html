@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Version Control — Git Concepts & Need</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <div class="logo-badge">Git</div>
+        <div class="logo-text">Version Control</div>
+      </div>
+      <nav class="nav">
+        <a href="#problem">Problem</a>
+        <a href="#why">Why it Matters</a>
+        <a href="#github">GitHub Basics</a>
+        <a href="#commands">Git Basics</a>
+        <a href="#branching">Branching</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Slide 1 -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <h1>Version Control - <span class="accent">Git</span><br><span class="muted">Concepts & Need</span></h1>
+          <p class="lead">Understanding what version control is and why it matters for modern software development</p>
+        </div>
+        <div class="hero-right">
+          <div class="hero-image" id="heroImage">
+            <img src="1.png" alt="Version Control - Git Concepts & Need">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2: Problem -->
+    <section class="section dark" id="problem">
+      <div class="container two-col">
+        <div>
+          <h2>The Problem</h2>
+          <h3 class="accent">From <span class="accent-2">Chaos</span> to <span class="accent-3">Control</span></h3>
+
+          <div class="example">
+            <div class="example-left">
+              <h4>Without Version Control</h4>
+              <ul>
+                <li>project.py</li>
+                <li>project_v2.py</li>
+                <li>project_FINAL_FINAL.py</li>
+              </ul>
+              <p class="small">Multiple files, confusion, lost work, no history</p>
+            </div>
+            <div class="example-right">
+              <h4>With Version Control</h4>
+              <p><strong>project.py</strong></p>
+              <p>ONE file with complete history. View and restore any previous state with a single command.</p>
+            </div>
+          </div>
+
+          <p class="blockquote">Version control is a system that tracks changes in project files over time — similar to revision history in Google Docs, but far more powerful for code.</p>
+        </div>
+
+        <div class="visual" id="problemImage">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop&auto=format" alt="Code Development - Version Control">
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3: Why Version Control Matters -->
+    <section class="section" id="why">
+      <div class="container">
+        <h2>Why Version Control <span class="accent">Matters</span></h2>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">📸</div>
+            <h4>Save Multiple Snapshots</h4>
+            <p>Every change is a snapshot saved with timestamp and message. Instantly restore any previous state.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h4>Prevent Data Loss</h4>
+            <p>Your project history is backed up (and recoverable by your team).</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧪</div>
+            <h4>Enable Experimentation</h4>
+            <p>Create branches for risky features. If experiments fail, delete branch, no damage.</p>
+          </div>
+          <div class="card">
+            <h4>Team Collaboration</h4>
+            <p>Multiple people work on features without overwriting each other's work.</p>
+          </div>
+          <div class="card">
+            <h4>Change Tracking & Attribution</h4>
+            <p>Every commit has author, timestamp, and message.</p>
+          </div>
+          <div class="card">
+            <h4>Organized Project Structure</h4>
+            <p>History is chronological and searchable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Git's Advantages and Timeline / Summary table -->
+    <section class="section dark" id="advantages">
+      <div class="container">
+        <h2>Git's Advantages</h2>
+        <div class="table-like">
+          <div class="table-row"><div>Distributed</div><div>Everyone has full project history locally</div></div>
+          <div class="table-row"><div>Fast</div><div>Most operations work locally (offline)</div></div>
+          <div class="table-row"><div>Reliable</div><div>Commits are cryptographically verified</div></div>
+          <div class="table-row"><div>Flexible</div><div>Supports different professional workflows</div></div>
+          <div class="table-row"><div>Popular</div><div>Most widely used — biggest community</div></div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-col">
+            <h4>WITHOUT VERSION CONTROL</h4>
+            <ol>
+              <li>Day 1: Write feature — file v1</li>
+              <li>Day 2: Another feature — file v2</li>
+              <li>Day 3: Bug appears — no idea when it started!</li>
+              <li>Day 4: Teammate overwrites your work</li>
+              <li>Day 5: Lost work, starting over</li>
+            </ol>
+          </div>
+          <div class="timeline-col">
+            <h4>WITH VERSION CONTROL</h4>
+            <ol>
+              <li>Day 1: git commit = snapshot</li>
+              <li>Day 2: Another snapshot</li>
+              <li>Day 3: Bug appears, quickly identify when it happened</li>
+              <li>Day 4: Team pulls/pushes, merges handled</li>
+              <li>Day 5: Conflict resolved, all work preserved</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="summary-table">
+          <div class="row"><span>Snapshot</span><span>Saved state of all project files</span><span>Restore to any point</span></div>
+          <div class="row"><span>Commit</span><span>Snapshot + who/when/what</span><span>Tracking/auditing</span></div>
+          <div class="row"><span>Repository</span><span>History database for all project changes</span><span>Central, organized project record</span></div>
+          <div class="row"><span>Branch</span><span>Independent line of development</span><span>Parallel work, no conflict</span></div>
+          <div class="row"><span>Merge</span><span>Combine branches</span><span>Team can integrate safely</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 5 & 6: GitHub basics & navigating -->
+    <section class="section" id="github">
+      <div class="container two-col">
+        <div>
+          <h2>GitHub Basics — Account Setup & Interface</h2>
+          <p><strong>Git</strong> = local version control • <strong>GitHub</strong> = online platform for sharing & collaborating</p>
+
+          <h4>Create GitHub Account</h4>
+          <ol>
+            <li>Visit <code>https://github.com/signup</code></li>
+            <li>Enter email, password, username</li>
+            <li>Verify email</li>
+            <li>Complete profile: picture, bio, company, location, links</li>
+          </ol>
+
+          <div class="note">Profile best practices: use your real name / professional handle — employers treat this as a portfolio.</div>
+
+          <h4>Quick Config</h4>
+          <div class="code">
+            <code>git --version</code>
+            <code>git config --global user.name "NAME"</code>
+            <code>git config --global user.email "youremail@example.com"</code>
+          </div>
+        </div>
+
+        <div class="visual" id="githubImage">
+          <img src="3.png" alt="GitHub Basics">
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Navigating GitHub</h3>
+        <div class="nav-grid">
+          <div>
+            <h4>Repo Home Tabs</h4>
+            <ul>
+              <li><strong>Code</strong> — View files/history/branches</li>
+              <li><strong>Issues</strong> — Discuss bugs/features</li>
+              <li><strong>Pull Requests</strong> — Review/merge code changes</li>
+              <li><strong>Actions</strong> — Automate (CI/CD)</li>
+              <li><strong>Settings</strong> — Permissions, protections</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Repo Visibility</h4>
+            <table class="mini-table">
+              <thead><tr><th>Aspect</th><th>Public</th><th>Private</th></tr></thead>
+              <tbody>
+                <tr><td>Who sees?</td><td>Everyone</td><td>Just you or team</td></tr>
+                <tr><td>Use case</td><td>Open source, portfolio</td><td>Internal/team</td></tr>
+                <tr><td>Contribute</td><td>Anyone can fork/raise issues</td><td>Only team</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7: Git basics & commands -->
+    <section class="section dark" id="commands">
+      <div class="container">
+        <h2>Git Basics — Core Commands & Workflow</h2>
+        <div class="workflow">
+          <div class="wf-step">Working Directory</div>
+          <div class="wf-arrow">git add →</div>
+          <div class="wf-step">Staging</div>
+          <div class="wf-arrow">git commit →</div>
+          <div class="wf-step">Local Repo</div>
+          <div class="wf-arrow">git push →</div>
+          <div class="wf-step">Remote (GitHub)</div>
+        </div>
+
+        <h3 style="margin-top:40px; margin-bottom:24px;">Key Commands</h3>
+        <div class="commands-two-col">
+          <div class="commands-col">
+            <div class="cmd">
+              <code>git init</code>
+              <div class="desc">Create local repo</div>
+            </div>
+            <div class="cmd">
+              <code>git config --global init.defaultBranch &lt;name&gt;</code>
+              <div class="desc">Set default branch name</div>
+            </div>
+            <div class="cmd">
+              <code>git status</code>
+              <div class="desc">Current file status (untracked/modified/staged)</div>
+            </div>
+            <div class="cmd">
+              <code>git add</code>
+              <div class="desc">Stage changes for commit</div>
+            </div>
+            <div class="cmd">
+              <code>git commit -m "msg"</code>
+              <div class="desc">Save snapshot</div>
+            </div>
+            <div class="cmd">
+              <code>git log</code>
+              <div class="desc">View history</div>
+            </div>
+          </div>
+          <div class="commands-col">
+            <div class="cmd">
+              <code>git remote add origin &lt;url&gt;</code>
+              <div class="desc">Add's your code to the repo</div>
+            </div>
+            <div class="cmd">
+              <code>git push -u origin main</code>
+              <div class="desc">Push the code from local to repo</div>
+            </div>
+            <div class="cmd">
+              <code>git clone &lt;url&gt;</code>
+              <div class="desc">Download repo</div>
+            </div>
+            <div class="cmd">
+              <code>git pull</code>
+              <div class="desc">Fetch & merge remote changes</div>
+            </div>
+            <div class="cmd">
+              <code>git push</code>
+              <div class="desc">Upload commits</div>
+            </div>
+            <div class="cmd">
+              <code>git diff</code>
+              <div class="desc">See changes (line-by-line)</div>
+            </div>
+          </div>
+        </div>
+
+        <h4>Commit Message Tips</h4>
+        <ul>
+          <li>Write in imperative ("Add feature", not "Added")</li>
+          <li>Be concise, clear, descriptive</li>
+          <li>One logical change per commit</li>
+        </ul>
+
+        <h4>Time Travel</h4>
+        <div class="code small">
+          <code>git show &lt;commit&gt;</code>
+          <code>git checkout &lt;commit&gt;</code>
+          <code>git revert &lt;commit&gt;</code>
+          <code>git reset --hard &lt;commit&gt;  # use with caution</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8: Branching -->
+    <section class="section" id="branching">
+      <div class="container">
+        <h2>Git Branching — Feature Development & Workflow</h2>
+        <p style="font-size:18px; margin-bottom:40px;">Branch = independent line of development. <strong>main</strong> is always stable/production.</p>
+
+        <div class="branching-intro">
+          <div class="branching-text">
+            <h4>Common Branch Naming</h4>
+            <ul>
+              <li>feature/login-system</li>
+              <li>bugfix/error-500</li>
+              <li>hotfix/payment-bug</li>
+              <li>refactor/db-layer</li>
+              <li>release/1.0.0</li>
+            </ul>
+
+            <h4>Branch Workflow</h4>
+            <ol>
+              <li>Create branch: <code>git branch &lt;branch-name&gt;</code></li>
+              <li>Switch: <code>git checkout &lt;branch-name&gt;</code> or <code>git switch &lt;branch-name&gt;</code></li>
+              <li>Create & switch: <code>git checkout -b &lt;branch-name&gt;</code></li>
+              <li>Make & commit changes</li>
+              <li>Push branch: <code>git push -u origin &lt;branch-name&gt;</code></li>
+              <li>Merge to main, then delete branch when done</li>
+            </ol>
+
+            <h4>Branching Workflows</h4>
+            <p><strong>GitHub Flow:</strong> main → feature branch → PR → review → merge → deploy</p>
+            <p><strong>GitFlow:</strong> develop + feature/bugfix/hotfix/release (for larger projects)</p>
+          </div>
+        </div>
+
+        <div class="branching-gallery">
+          <div class="gallery-item" data-image="5.png" data-title="Creating Branches" data-description="Branches allow you to work on features independently without affecting the main codebase. Use `git branch` or `git checkout -b` to create new branches.">
+            <div class="gallery-image">
+              <img src="5.png" alt="Branching Concept 1">
+            </div>
+            <div class="gallery-info">
+              <h4>Creating Branches</h4>
+              <p>Branches allow you to work on features independently without affecting the main codebase. Use <code>git branch</code> or <code>git checkout -b</code> to create new branches.</p>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-image="6.png" data-title="Switching Between Branches" data-description="Use `git checkout` or `git switch` to move between branches. Your working directory updates to match the selected branch.">
+            <div class="gallery-image">
+              <img src="6.png" alt="Branching Concept 2">
+            </div>
+            <div class="gallery-info">
+              <h4>Switching Between Branches</h4>
+              <p>Use <code>git checkout</code> or <code>git switch</code> to move between branches. Your working directory updates to match the selected branch.</p>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-image="7.png" data-title="Branch Merging" data-description="Merge branches to integrate changes. Use `git merge` to combine branch history into your current branch, typically merging feature branches into main.">
+            <div class="gallery-image">
+              <img src="7.png" alt="Branching Concept 3">
+            </div>
+            <div class="gallery-info">
+              <h4>Branch Merging</h4>
+              <p>Merge branches to integrate changes. Use <code>git merge</code> to combine branch history into your current branch, typically merging feature branches into main.</p>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-image="8.png" data-title="Branch Visualization" data-description="Visualize your branch structure with `git log --oneline --graph --all`. This shows how branches diverge and merge over time.">
+            <div class="gallery-image">
+              <img src="8.png" alt="Branching Concept 4">
+            </div>
+            <div class="gallery-info">
+              <h4>Branch Visualization</h4>
+              <p>Visualize your branch structure with <code>git log --oneline --graph --all</code>. This shows how branches diverge and merge over time.</p>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-image="9.png" data-title="Branch Management" data-description="Delete merged branches with `git branch -d` to keep your repository clean. Use `git branch -a` to see all local and remote branches.">
+            <div class="gallery-image">
+              <img src="9.png" alt="Branching Concept 5">
+            </div>
+            <div class="gallery-info">
+              <h4>Branch Management</h4>
+              <p>Delete merged branches with <code>git branch -d</code> to keep your repository clean. Use <code>git branch -a</code> to see all local and remote branches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Modal/Lightbox -->
+    <div id="imageModal" class="image-modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <div class="modal-image-container">
+          <img id="modalImage" src="" alt="Full size image">
+        </div>
+        <div class="modal-info">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDescription"></p>
+        </div>
+      </div>
+    </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>Built from PDF: <em>Version Control - Git Concepts & Need</em></div>
+        <div class="small muted">Educational content for learning Git and version control</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
