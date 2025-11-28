@@ -1015,33 +1015,46 @@
     display:flex;
     flex-direction:column;
     gap:32px;
+    align-items:center;
   }
   .footer-content{
     display:flex;
     justify-content:center;
     align-items:center;
     width:100%;
+    max-width:600px;
+    margin:0 auto;
+  }
+  .footer-social{
+    width:100%;
+    text-align:center;
   }
   .footer-social h4{
-    margin:0 0 24px 0;
-    font-size:20px;
+    margin:0 auto 32px auto;
+    font-size:24px;
     font-weight:700;
     color:var(--accent);
     text-transform:uppercase;
-    letter-spacing:1px;
+    letter-spacing:2px;
+    text-align:center;
   }
   .social-links{
     display:flex;
     flex-direction:column;
     gap:16px;
+    align-items:stretch;
+    width:100%;
+    max-width:400px;
+    margin:0 auto;
   }
   .social-link{
     display:flex;
     align-items:center;
+    justify-content:flex-start;
     gap:16px;
     color:var(--muted);
     text-decoration:none;
-    padding:16px 20px;
+    padding:18px 24px;
     border-radius:12px;
     border:1px solid rgba(168,85,247,0.3);
     background:linear-gradient(180deg, rgba(168,85,247,0.08), rgba(59,130,246,0.05));
@@ -1050,6 +1063,8 @@
     font-weight:600;
     position:relative;
     overflow:hidden;
+    width:100%;
+    box-sizing:border-box;
   }
   .social-link::before{
     content:'';
@@ -1068,7 +1083,7 @@
     color:var(--text);
     border-color:rgba(168,85,247,0.6);
     background:linear-gradient(180deg, rgba(168,85,247,0.2), rgba(59,130,246,0.15));
-    transform:translateX(6px) translateY(-2px);
+    transform:translateY(-2px);
     box-shadow:0 8px 24px rgba(168,85,247,0.4), 0 0 20px rgba(168,85,247,0.2);
   }
   .social-link svg{
@@ -1205,9 +1220,11 @@
     .wf-step{text-align:center}
     .wf-arrow{transform:rotate(90deg); margin:8px 0}
     .footer-inner{flex-direction:column; text-align:center}
-    .footer-content{flex-direction:column; gap:32px; text-align:center}
-    .footer-social h4{text-align:center}
-    .social-links{align-items:center}
+    .footer-content{max-width:100%}
+    .footer-social{width:100%}
+    .footer-social h4{font-size:20px; margin-bottom:24px}
+    .social-links{max-width:100%}
+    .social-link{padding:16px 20px}
     .branching-hero{grid-template-columns:1fr; gap:24px}
     .branching-hero-item{height:320px}
     .branching-hero-overlay{padding:24px}
