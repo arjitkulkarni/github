@@ -130,6 +130,16 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = ''; // Restore scrolling
     }
 
+    // Open modal when branching hero image is clicked
+    document.querySelectorAll('.branching-hero-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const imageSrc = item.getAttribute('data-image');
+        const title = item.getAttribute('data-title');
+        const description = item.getAttribute('data-description');
+        openModal(imageSrc, title, description);
+      });
+    });
+
     // Open modal when gallery image is clicked
     document.querySelectorAll('.gallery-item').forEach(item => {
       const imageContainer = item.querySelector('.gallery-image');
